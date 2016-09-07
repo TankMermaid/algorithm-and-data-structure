@@ -45,3 +45,15 @@ def quicksort(arr, start, end):
         p = partition(arr, start, end)
         quicksort(arr, start, p - 1)
         quicksort(arr, p + 1, end)
+
+
+def insertion_sort(arr):
+    if len(arr) <= 1:
+        return arr
+
+    for i in range(1, len(arr)):
+        for j in reversed(range(i)):
+            if arr[j] > arr[j + 1]:
+                arr[j + 1], arr[j] = arr[j], arr[j + 1]
+            else:
+                break

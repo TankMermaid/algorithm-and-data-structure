@@ -21,3 +21,13 @@ def test_quicksort():
 
         sort.quicksort(arr, 0, len(arr) - 1)
         assert arr == sorted(arr_copy)
+
+
+def test_insertion_sort():
+    for _ in range(500):
+        r = random.randint(0, 100)
+        arr = get_random_arr(r)
+        arr_copy = arr[:]
+
+        sort.insertion_sort(arr)
+        assert arr == sorted(arr_copy)
