@@ -1,4 +1,8 @@
-def merge_sort(arr):
+def mergesort(arr):
+    """
+    time: n lg(n)
+    space: n
+    """
     def merge(a1, a2):
         l1, l2 = len(a1), len(a2)
 
@@ -14,4 +18,30 @@ def merge_sort(arr):
     else:
         mid = len(arr) // 2
 
-        return merge(merge_sort(arr[:mid]), merge_sort(arr[mid:]))
+        return merge(mergesort(arr[:mid]), mergesort(arr[mid:]))
+
+
+def quicksort(arr, start, end):
+    """
+    start, end is inclusive. you need to perform swap
+    inplace sorting
+
+    time: n^2, but n lg n in average
+    space: 1
+    """
+    def partition(arr, start, end):
+        '''choose end as pivot'''
+        p = start - 1  # p is the collection boarder line
+        for i in range(start, end):
+            if arr[i] < arr[end]:  # only collect smaller items
+                p += 1
+                arr[i], arr[p] = arr[p], arr[i]
+        arr[p + 1], arr[end] = arr[end], arr[p + 1]
+        return p + 1
+
+    if start >= end:  # recusion ending condition
+        return
+    else:
+        p = partition(arr, start, end)
+        quicksort(arr, start, p - 1)
+        quicksort(arr, p + 1, end)
