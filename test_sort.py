@@ -3,7 +3,7 @@ import random
 
 
 def get_random_arr(n):
-    return [random.randint(-100, 100) for _ in range(n)]
+    return [random.randint(0, 100) for _ in range(n)]
 
 
 def test_merge_sort():
@@ -31,3 +31,10 @@ def test_insertion_sort():
 
         sort.insertion_sort(arr)
         assert arr == sorted(arr_copy)
+
+
+def test_counting_sort():
+    for _ in range(500):
+        r = random.randint(0, 100)
+        arr = get_random_arr(r)
+        assert sort.counting_sort(arr, 100) == sorted(arr)

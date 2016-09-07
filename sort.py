@@ -57,3 +57,24 @@ def insertion_sort(arr):
                 arr[j + 1], arr[j] = arr[j], arr[j + 1]
             else:
                 break
+
+
+def counting_sort(arr, k):
+    """
+    you need to make buckets
+    so the assumption here is every number in arr is belong to 0 <= int <= k
+
+    time: n + k
+    space: n + k
+    """
+
+    bucket = [0] * (k + 1)  # 0 included
+
+    for num in arr:
+        bucket[num] += 1
+
+    res = []
+    for i, cnt in enumerate(bucket):
+        res.extend([i] * cnt)
+
+    return res
