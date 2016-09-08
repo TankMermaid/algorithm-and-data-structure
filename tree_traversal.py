@@ -20,3 +20,23 @@ def post_order(root):
         return []
     else:
         return post_order(root.left) + post_order(root.right) + [root.key]
+
+
+def BFS(root):
+    """traverse the tree layer by layer"""
+    if root is None:
+        return []
+    else:
+        batch = [root]
+        res = []
+        while batch:
+            new_batch = []
+            for node in batch:
+                res.append(node.key)
+                if node.left:
+                    new_batch.append(node.left)
+                if node.right:
+                    new_batch.append(node.right)
+
+            batch = new_batch
+        return res
