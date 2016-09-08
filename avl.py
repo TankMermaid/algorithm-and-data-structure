@@ -272,10 +272,12 @@ class BST(object):
             return node.delete()
 
     def check_ri(self):
-        if self.root is not None:
-            if self.root.parent is not None:
-                raise RuntimeError("BST RI violated by the root's parent's pointer")
-
+        if self.root is None:
+            return True
+        elif self.root.parent is not None:
+            print("BST RI violated by the root's parent's pointer")
+            return False
+        else:
             return self.root.check_ri()
 
 
